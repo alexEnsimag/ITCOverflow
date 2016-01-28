@@ -9,7 +9,6 @@ def login():
     return template('login.html')
 
 @post('/subscribe')
-
 def create_account():
 	firstName = request.forms.get('firstName')
 	lastName = request.forms.get('lastName')
@@ -23,7 +22,7 @@ def create_account():
 	dbase.subscribe(firstName, lastName, email, password, program, skills, job, country)
 
 @post("/auth")
-def authentificaion():
+def authentification():
 	email = request.forms.get('email')
 	password = request.forms.get('password')
 
