@@ -14,8 +14,6 @@ class DB:
         }
 
         self.cnx =  MySQLdb.connect(**config)
-
-        #self.cnx = MySQLdb.connect(host="localhost", port=8889, user='root', passwd='root', db='ITCOverflow')
         self.cursor = self.cnx.cursor()
 
     def auth(self, email, password):
@@ -28,7 +26,7 @@ class DB:
             return False
 
     def subscribe(self, firstname, lastname, email, password, program, skills, job, country):
-        request = "insert into itcoverflow.users (firstname, lastname, email, password, program, skills, job, country) " \
+        request = "insert into users (firstname, lastname, email, password, program, skills, job, country) " \
                   "VALUES (\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\')" % \
                   (firstname, lastname, email, password, program, skills, job, country)
         self.cursor.execute(request)

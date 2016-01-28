@@ -8,7 +8,7 @@
 }
 .top-profile{
     background-color: lightskyblue;
-    height: 200px;
+    height: 400px;
     width: 100%;
 }
 .profile-pic{
@@ -16,5 +16,31 @@
     -moz-border-radius: 200px 200px 200px 200px;
     -webkit-border-radius: 200px 200px 200px 200px;
     border: 0px solid #000000;
-    background-image: url('../images/')
+    height: 200px;
+    width: 200px;
+    background-image: url('../images/defaultprofile.png');
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+    padding-top: 8%;
 }
+.name-holder{
+    position: relative;
+    text-align: center;
+}
+.profile-name{
+    font-family: Helvetica, sans-serif;
+}
+.user-info-holder{
+    border: 1px solid black;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info{
+    font-family: Helvetica, sans-serif;
+}
+
