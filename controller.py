@@ -3,7 +3,13 @@ import db
 
 dbase = db.DB()
 
+
+@get('/')
+def login():
+    return template('login.html')
+
 @post("/subscribe")
+
 def create_account():
 	firstName = request.forms.get('firstName')
 	lastName = request.forms.get('lastName')
@@ -15,7 +21,6 @@ def create_account():
 	country = request.forms.get('country')
 
 	dbase.subscribe(firstName, lastName, email, password, program, skills, job, country)
-
 
 @post("/auth")
 def authentificaion():

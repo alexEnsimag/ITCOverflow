@@ -37,4 +37,21 @@ function sendNewUserDetails(){
 
 function login(){
     var username = $('.username').val();
+    var userPassword = $('.userPassword').val();
+
+    $.ajax({
+            url: '/auth',
+            method: 'post',
+            dataType: 'application/json',
+            data: {"email": username, "password": userPassword},
+            success: function (data) {
+                if (data){
+                    console.log('succesfulLogin')
+                }
+                else{
+                    console.log('no')
+                }
+            }
+        });
+
 }
