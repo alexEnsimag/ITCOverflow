@@ -22,7 +22,7 @@ def create_account():
     country = request.forms.get('country')
 
     dbase.subscribe(firstName, lastName, email, password, program, skills, job, country)
-    json.dumps({'firstName': firstName,
+    return json.dumps({'firstName': firstName,
                 'lastName': lastName,
                 'email': email,
                 'program': program,
@@ -30,12 +30,13 @@ def create_account():
                 'job': job,
                 'country': country})
 
+
 @post("/auth")
 def authentification():
     email = request.forms.get('email')
     password = request.forms.get('password')
-
-    return dbase.auth(email, password)
+    success = dbase.auth(email, password)
+    return json.dumps(success)
 
 
 @get('/js/<filename:re:.*\.js>')

@@ -2,11 +2,11 @@
  * Created by User on 1/28/2016.
  */
 $(function(){
-   $('.signup').unbind('click').bind('click', function(){
+    $('.signup').unbind('click').bind('click', function(){
         $('.form-holder').hide();
-       $('.create-profile').removeClass('hidden');
-       return false;
-   })
+        $('.create-profile').removeClass('hidden');
+        return false;
+    })
 });
 
 function sendNewUserDetails(){
@@ -19,39 +19,16 @@ function sendNewUserDetails(){
     var skills = $('.skills').val();
     var program = $('.program').val();
 
-    $.ajax({
-            url: '/subscribe',
-            method: 'post',
-            dataType: 'application/json',
-            data: {"email": email, "password": password, "firstName": firstName, "lastName": lastName, "job": job, "country": country, "skills": skills, "program": program},
-            success: function (data) {
-                if (data){
-                    console.log('succesful')
-                }
-                else{
-                    console.log('no')
-                }
-            }
-        });
+    $.post("/subscribe", {"email": email, "password": password, "firstName": firstName, "lastName": lastName, "job": job, "country": country, "skills": skills, "program": program}, function(data){
+        console.log("result " + JSON.stringify(data));
+    }, "json");
 }
 
 function login(){
     var username = $('.username').val();
     var userPassword = $('.userPassword').val();
-    console.log('here');
-    $.ajax({
-            url: 'auth',
-            method: 'post',
-            dataType: 'application/json',
-            data: {"email": username, "password": userPassword},
-            success: function (data) {
-                if (data){
-                    console.log('succesfulLogin')
-                }
-                else{
-                    console.log('no')
-                }
-            }
-        });
 
+    $.post("/auth", {"email": username, "password": userPassword}, function(data){
+        console.log("result " + JSON.stringify(data));
+    }, "json");
 }

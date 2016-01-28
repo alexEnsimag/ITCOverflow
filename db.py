@@ -13,6 +13,13 @@ class DB:
             'port': 3306
         }
 
+        #config = {
+        #    'user': 'root',
+        #    'host': '127.0.0.1',
+        #    'db': 'ITCOverflow',
+        #    'port': 3306
+        #}
+
         self.cnx = MySQLdb.connect(**config)
         self.cursor = self.cnx.cursor()
 
