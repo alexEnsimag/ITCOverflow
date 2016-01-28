@@ -1,9 +1,11 @@
-import mysql
-import mysql.connector as connector
+#import mysql
+#import mysql.connector as connector
+import MySQLdb
+# import _mysql
 
 class DB:
     def __init__(self):
-        self.cnx = connector.connect(user='root', database='ITCOverflow')
+        self.cnx = MySQLdb.connect(host="127.0.0.1", port=3306, user='root', db='ITCOverflow')
         self.cursor = self.cnx.cursor()
 
     def auth(self, email, password):
