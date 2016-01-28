@@ -1,15 +1,25 @@
 #import mysql
 #import mysql.connector as connector
 import MySQLdb
-# import _mysql
+#import _mysql
 
 class DB:
     def __init__(self):
-        self.cnx = MySQLdb.connect(host="127.0.0.1", port=3306, user='root', db='ITCOverflow')
+        config = {
+            'user': 'alexsammax',
+            'passwd': 'alexsammax',
+            'host': 'alexsammax.cxklfeijcgyf.us-west-2.rds.amazonaws.com',
+            'db': 'alexsammax',
+            'port': 3306
+        }
+
+        self.cnx =  MySQLdb.connect(**config)
+
+        #self.cnx = MySQLdb.connect(host="localhost", port=8889, user='root', passwd='root', db='ITCOverflow')
         self.cursor = self.cnx.cursor()
 
     def auth(self, email, password):
-        request = "SELECT id from itcoverflow.users where email=\'%s\' and password=\'%s\'" % (email, password)
+        request = "SELECT id from users where email=\'%s\' and password=\'%s\'" % (email, password)
         self.cursor.execute(request)
         results = self.cursor.fetchall()
         if len(results) > 0:
@@ -27,8 +37,8 @@ class DB:
         self.cnx.close()
 
 
-#db = DB()
-#print db.auth('sam@ITC.com', 'sam')
+db = DB()
+print db.auth('sam@ITC.com', 'sam')
 #print db.auth('sam@ITC.com', '')
 #db.subscribe('alex', 'cukier', 'alex@ITC.com', 'alex', 'ITC Fellows 2016', 'c,c++,java', 'coder','hong kong')
 #print db.auth('alex@ITC.com', 'alex')
