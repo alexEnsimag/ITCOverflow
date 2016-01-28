@@ -8,25 +8,28 @@ dbase = db.DB()
 def login():
     return template('login.html')
 
+
 @post('/subscribe')
 def create_account():
-	firstName = request.forms.get('firstName')
-	lastName = request.forms.get('lastName')
-	email = request.forms.get('email')
-	password = request.forms.get('password')
-	program = request.forms.get('program')
-	skills = request.forms.get('skills')
-	job = request.forms.get('job')
-	country = request.forms.get('country')
+    firstName = request.forms.get('firstName')
+    lastName = request.forms.get('lastName')
+    email = request.forms.get('email')
+    password = request.forms.get('password')
+    program = request.forms.get('program')
+    skills = request.forms.get('skills')
+    job = request.forms.get('job')
+    country = request.forms.get('country')
 
-	dbase.subscribe(firstName, lastName, email, password, program, skills, job, country)
+    dbase.subscribe(firstName, lastName, email, password, program, skills, job, country)
+
 
 @post("/auth")
 def authentification():
-	email = request.forms.get('email')
-	password = request.forms.get('password')
+    email = request.forms.get('email')
+    password = request.forms.get('password')
 
-	dbase.auth(email, password)
+    dbase.auth(email, password)
+
 
 @get('/js/<filename:re:.*\.js>')
 def javascripts(filename):
@@ -41,5 +44,6 @@ def stylesheets(filename):
 @get('/images/<filename:re:.*\.(jpg|png|gif|ico)>')
 def images(filename):
     return static_file(filename, root='images')
+
 
 run(host='localhost', port=7000, debug=True)
