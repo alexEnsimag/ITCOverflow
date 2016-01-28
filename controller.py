@@ -34,7 +34,7 @@ def javascripts(filename):
     return static_file(filename, root='js')
 
 
-@get('/css/<filename:re:.*\.css>')
+@get('/css/<filename:re:.*\.(css|map)>')
 def stylesheets(filename):
     return static_file(filename, root='css')
 

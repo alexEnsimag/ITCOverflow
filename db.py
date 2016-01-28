@@ -35,8 +35,8 @@ class DB:
         self.cnx.close()
 
 
-#db = DB()
-#print db.auth('sam@ITC.com', 'sam')
+db = DB()
+print db.auth('sam@ITC.com', 'sam')
 #print db.auth('sam@ITC.com', '')
 #db.subscribe('alex', 'cukier', 'alex@ITC.com', 'alex', 'ITC Fellows 2016', 'c,c++,java', 'coder','hong kong')
 #print db.auth('alex@ITC.com', 'alex')
