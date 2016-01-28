@@ -38,9 +38,9 @@ function sendNewUserDetails(){
 function login(){
     var username = $('.username').val();
     var userPassword = $('.userPassword').val();
-
+    console.log('here');
     $.ajax({
-            url: '/auth',
+            url: 'auth',
             method: 'post',
             dataType: 'application/json',
             data: {"email": username, "password": userPassword},
