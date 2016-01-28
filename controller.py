@@ -1,5 +1,6 @@
 from bottle import run, template, static_file, get, post, request
 import db
+import json
 
 dbase = db.DB()
 
@@ -21,7 +22,13 @@ def create_account():
     country = request.forms.get('country')
 
     dbase.subscribe(firstName, lastName, email, password, program, skills, job, country)
-
+    json.dumps({'firstName': firstName,
+                'lastName': lastName,
+                'email': email,
+                'program': program,
+                'skills': skills,
+                'job': job,
+                'country': country})
 
 @post("/auth")
 def authentification():
