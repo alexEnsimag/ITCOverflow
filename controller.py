@@ -1,6 +1,7 @@
 from bottle import run, template, static_file, get, post, request
+import db
 
-db = DB()
+dbase = db.DB()
 
 @post("/subscribe")
 def create_account():
@@ -13,7 +14,7 @@ def create_account():
 	job = request.forms.get('job')
 	country = request.forms.get('country')
 
-	db.subscribe(firstName, lastName, email, password, program, skills, job, country)
+	dbase.subscribe(firstName, lastName, email, password, program, skills, job, country)
 
 
 @post("/auth")
@@ -21,6 +22,6 @@ def authentificaion():
 	email = request.forms.get('email')
 	password = request.forms.get('password')
 
-	db.auth(email, password)
+	dbase.auth(email, password)
 
 run(host='localhost', port=7000, debug=True)
