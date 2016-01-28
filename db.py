@@ -13,7 +13,7 @@ class DB:
             'port': 3306
         }
 
-        self.cnx =  MySQLdb.connect(**config)
+        self.cnx = MySQLdb.connect(**config)
         self.cursor = self.cnx.cursor()
 
     def auth(self, email, password):
