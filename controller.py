@@ -35,7 +35,7 @@ def authentification():
     email = request.forms.get('email')
     password = request.forms.get('password')
 
-    dbase.auth(email, password)
+    return dbase.auth(email, password)
 
 
 @get('/js/<filename:re:.*\.js>')
