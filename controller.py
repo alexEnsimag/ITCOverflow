@@ -35,8 +35,29 @@ def create_account():
 def authentification():
     email = request.forms.get('email')
     password = request.forms.get('password')
-    success = dbase.auth(email, password)
-    return json.dumps(success)
+
+    return dbase.auth(email, password)
+
+
+@post("/create_topic")
+def create_topic():
+    title = request.forms.get('title')
+    category = request.forms.get('category')
+    text = request.forms.get('text')
+
+    dbase.create_topic(title, category, text)
+    return json.dumps({'title': title,
+                'category': category,
+                'text': text
+                })
+
+@post("/create_answer")
+def create_answer():
+    text = request.forms.get('text')
+
+    dbase.create_topic(text)
+    return json.dumps({'text': text
+                })
 
 
 @get('/js/<filename:re:.*\.js>')
